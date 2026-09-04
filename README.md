@@ -118,10 +118,6 @@ ClinicAppointmentSystem/
 ├── ClinicAppointmentSystem.sln   ← open THIS in Visual Studio 2022
 ├── README.md
 ├── .gitignore
-├── docs/
-│   ├── 01-analysis.md          Full design rationale & noun analysis
-│   ├── 02-github-setup.md      Git + GitHub walkthrough
-│   └── 03-winforms-guide.md    UI walkthrough & demo script
 ├── diagrams/
 │   ├── class-diagram.svg       Rendered diagram (open in a browser)
 │   ├── class-diagram.puml      PlantUML source (editable)
