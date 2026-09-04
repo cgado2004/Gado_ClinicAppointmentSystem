@@ -107,8 +107,7 @@ opposite language:
 | SQL | `ON DELETE CASCADE` | `ON DELETE SET NULL` |
 | C# | `internal` ctor, created by owner | `public` ctor, passed in |
 
-Both are 1-to-many shapes. **Only the semantics differ** — and the rules tell
-you which is which.
+Both are 1-to-many shapes. **Only the semantics differ**.
 
 ---
 
@@ -188,36 +187,6 @@ mysql -u root -p < database/verify-relationships.sql   # optional proof
 `verify-relationships.sql` deletes a patient and a department, shows that the
 medical record vanished while the doctors survived, then rolls everything back.
 
----
-
-## Design decisions worth defending
-
-1. **Specialization is an attribute, not a class.** No business rule gives it
-   attributes or relationships of its own. Making it a class would be
-   over-modelling.
-
-2. **`Department 1..* Doctor`, not `0..*`.** A department with no doctors isn't
-   meaningful here. `0..*` is defensible if you want to allow newly created
-   empty departments — just be ready to justify your choice.
-
-3. **`status` is an enumeration.** Rule 10 requires a status. An enum makes
-   invalid states unrepresentable, unlike a free-text string.
-
-4. **No foreign-key attributes in the classes.** You won't find
-   `patientId : int` inside `Appointment`. In UML the association *line*
-   expresses that. Foreign keys belong in the database schema.
-
-5. **Both appointment ends are associations.** An appointment has independent
-   identity and lifecycle — scheduled, completed, cancelled — so neither the
-   patient nor the doctor composes it.
-
----
-
-## Note on "UMLA"
-
-The activity sheet says *"UMLA class diagram"*. There's no standard by that
-name — it's a typo for **UML** (Unified Modeling Language). This deliverable is
-a UML Class Diagram. Worth a quiet check with your instructor.
 
 ---
 
