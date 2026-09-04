@@ -1,0 +1,80 @@
+%% Clinic Appointment System — Mermaid class diagram
+%% Renders natively on GitHub inside ```mermaid fences.
+
+classDiagram
+    direction LR
+
+    class Department {
+        -int departmentId
+        -string name
+        -string location
+        +addDoctor(Doctor d) void
+        +removeDoctor(Doctor d) void
+        +listDoctors() List~Doctor~
+    }
+
+    class Doctor {
+        -int doctorId
+        -string firstName
+        -string lastName
+        -string specialization
+        -string contactNumber
+        +viewSchedule() List~Appointment~
+        +getFullName() string
+    }
+
+    class Appointment {
+        -int appointmentId
+        -Date date
+        -Time time
+        -AppointmentStatus status
+        -string reason
+        +schedule() void
+        +cancel() void
+        +complete() void
+        +reschedule(Date d, Time t) void
+    }
+
+    class Patient {
+        -int patientId
+        -string firstName
+        -string lastName
+        -Date dateOfBirth
+        -string gender
+        -string contactNumber
+        -string address
+        +scheduleAppointment(Doctor doc, Date d, Time t) Appointment
+        +cancelAppointment(Appointment a) void
+        +getFullName() string
+    }
+
+    class MedicalRecord {
+        -int recordId
+        -string bloodType
+        -string allergies
+        -string medicalHistory
+        -Date lastUpdated
+        +addEntry(string note) void
+        +updateRecord() void
+        +viewHistory() string
+    }
+
+    class AppointmentStatus {
+        <<enumeration>>
+        Scheduled
+        Completed
+        Cancelled
+        NoShow
+    }
+
+    %% AGGREGATION (hollow diamond) - Rule 11: operate independently
+    Department "1" o-- "1..*" Doctor : employs
+
+    %% COMPOSITION (filled diamond) - Rule 9: does not exist independently
+    Patient "1" *-- "1" MedicalRecord : owns
+
+    %% ASSOCIATIONS - Rules 1-4
+    Patient "1" -- "0..*" Appointment : schedules
+    Doctor "1" -- "0..*" Appointment : handles
+
+    Appointment ..> AppointmentStatus : uses

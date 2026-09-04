@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="880" viewBox="0 0 1180 880" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1180" height="880" fill="#f7f9fc"/>
+
+  <text x="590" y="38" text-anchor="middle" font-size="24" font-weight="bold" fill="#12263f">Clinic Appointment System — UML Class Diagram</text>
+  <text x="590" y="62" text-anchor="middle" font-size="14" fill="#5a6b82">Tagum City Community Clinic</text>
+
+  <!-- ============ DEPARTMENT ============ -->
+  <g>
+    <rect x="60" y="110" width="250" height="150" fill="#ffffff" stroke="#2d4a72" stroke-width="2" rx="3"/>
+    <rect x="60" y="110" width="250" height="30" fill="#2d4a72" rx="3"/>
+    <rect x="60" y="130" width="250" height="10" fill="#2d4a72"/>
+    <text x="185" y="131" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">Department</text>
+    <line x1="60" y1="140" x2="310" y2="140" stroke="#2d4a72" stroke-width="2"/>
+    <text x="72" y="158" font-size="12" fill="#1b2a41">- departmentId : int</text>
+    <text x="72" y="176" font-size="12" fill="#1b2a41">- name : string</text>
+    <text x="72" y="194" font-size="12" fill="#1b2a41">- location : string</text>
+    <line x1="60" y1="204" x2="310" y2="204" stroke="#2d4a72" stroke-width="1.5"/>
+    <text x="72" y="221" font-size="12" fill="#1b2a41">+ addDoctor(d : Doctor) : void</text>
+    <text x="72" y="238" font-size="12" fill="#1b2a41">+ removeDoctor(d : Doctor) : void</text>
+    <text x="72" y="255" font-size="12" fill="#1b2a41">+ listDoctors() : List&lt;Doctor&gt;</text>
+  </g>
+
+  <!-- ============ DOCTOR ============ -->
+  <g>
+    <rect x="60" y="400" width="250" height="168" fill="#ffffff" stroke="#2d4a72" stroke-width="2" rx="3"/>
+    <rect x="60" y="400" width="250" height="30" fill="#2d4a72" rx="3"/>
+    <rect x="60" y="420" width="250" height="10" fill="#2d4a72"/>
+    <text x="185" y="421" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">Doctor</text>
+    <line x1="60" y1="430" x2="310" y2="430" stroke="#2d4a72" stroke-width="2"/>
+    <text x="72" y="448" font-size="12" fill="#1b2a41">- doctorId : int</text>
+    <text x="72" y="466" font-size="12" fill="#1b2a41">- firstName : string</text>
+    <text x="72" y="484" font-size="12" fill="#1b2a41">- lastName : string</text>
+    <text x="72" y="502" font-size="12" fill="#1b2a41">- specialization : string</text>
+    <text x="72" y="520" font-size="12" fill="#1b2a41">- contactNumber : string</text>
+    <line x1="60" y1="530" x2="310" y2="530" stroke="#2d4a72" stroke-width="1.5"/>
+    <text x="72" y="547" font-size="12" fill="#1b2a41">+ viewSchedule() : List&lt;Appointment&gt;</text>
+    <text x="72" y="563" font-size="12" fill="#1b2a41">+ getFullName() : string</text>
+  </g>
+
+  <!-- ============ APPOINTMENT ============ -->
+  <g>
+    <rect x="465" y="400" width="255" height="186" fill="#ffffff" stroke="#7a4b17" stroke-width="2" rx="3"/>
+    <rect x="465" y="400" width="255" height="30" fill="#7a4b17" rx="3"/>
+    <rect x="465" y="420" width="255" height="10" fill="#7a4b17"/>
+    <text x="592" y="421" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">Appointment</text>
+    <line x1="465" y1="430" x2="720" y2="430" stroke="#7a4b17" stroke-width="2"/>
+    <text x="477" y="448" font-size="12" fill="#1b2a41">- appointmentId : int</text>
+    <text x="477" y="466" font-size="12" fill="#1b2a41" font-weight="bold">- date : Date</text>
+    <text x="477" y="484" font-size="12" fill="#1b2a41" font-weight="bold">- time : Time</text>
+    <text x="477" y="502" font-size="12" fill="#1b2a41" font-weight="bold">- status : AppointmentStatus</text>
+    <text x="477" y="520" font-size="12" fill="#1b2a41">- reason : string</text>
+    <line x1="465" y1="530" x2="720" y2="530" stroke="#7a4b17" stroke-width="1.5"/>
+    <text x="477" y="547" font-size="12" fill="#1b2a41">+ schedule() : void</text>
+    <text x="477" y="564" font-size="12" fill="#1b2a41">+ cancel() : void</text>
+    <text x="477" y="581" font-size="12" fill="#1b2a41">+ complete() : void</text>
+  </g>
+
+  <!-- ============ PATIENT ============ -->
+  <g>
+    <rect x="870" y="110" width="250" height="204" fill="#ffffff" stroke="#1d5c46" stroke-width="2" rx="3"/>
+    <rect x="870" y="110" width="250" height="30" fill="#1d5c46" rx="3"/>
+    <rect x="870" y="130" width="250" height="10" fill="#1d5c46"/>
+    <text x="995" y="131" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">Patient</text>
+    <line x1="870" y1="140" x2="1120" y2="140" stroke="#1d5c46" stroke-width="2"/>
+    <text x="882" y="158" font-size="12" fill="#1b2a41">- patientId : int</text>
+    <text x="882" y="176" font-size="12" fill="#1b2a41">- firstName : string</text>
+    <text x="882" y="194" font-size="12" fill="#1b2a41">- lastName : string</text>
+    <text x="882" y="212" font-size="12" fill="#1b2a41">- dateOfBirth : Date</text>
+    <text x="882" y="230" font-size="12" fill="#1b2a41">- gender : string</text>
+    <text x="882" y="248" font-size="12" fill="#1b2a41">- contactNumber : string</text>
+    <text x="882" y="266" font-size="12" fill="#1b2a41">- address : string</text>
+    <line x1="870" y1="276" x2="1120" y2="276" stroke="#1d5c46" stroke-width="1.5"/>
+    <text x="882" y="293" font-size="12" fill="#1b2a41">+ scheduleAppointment(...) : void</text>
+    <text x="882" y="309" font-size="12" fill="#1b2a41">+ getFullName() : string</text>
+  </g>
+
+  <!-- ============ MEDICALRECORD ============ -->
+  <g>
+    <rect x="870" y="470" width="250" height="168" fill="#ffffff" stroke="#1d5c46" stroke-width="2" rx="3"/>
+    <rect x="870" y="470" width="250" height="30" fill="#1d5c46" rx="3"/>
+    <rect x="870" y="490" width="250" height="10" fill="#1d5c46"/>
+    <text x="995" y="491" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">MedicalRecord</text>
+    <line x1="870" y1="500" x2="1120" y2="500" stroke="#1d5c46" stroke-width="2"/>
+    <text x="882" y="518" font-size="12" fill="#1b2a41">- recordId : int</text>
+    <text x="882" y="536" font-size="12" fill="#1b2a41">- bloodType : string</text>
+    <text x="882" y="554" font-size="12" fill="#1b2a41">- allergies : string</text>
+    <text x="882" y="572" font-size="12" fill="#1b2a41">- medicalHistory : string</text>
+    <text x="882" y="590" font-size="12" fill="#1b2a41">- lastUpdated : Date</text>
+    <line x1="870" y1="600" x2="1120" y2="600" stroke="#1d5c46" stroke-width="1.5"/>
+    <text x="882" y="617" font-size="12" fill="#1b2a41">+ updateRecord(...) : void</text>
+    <text x="882" y="633" font-size="12" fill="#1b2a41">+ viewHistory() : string</text>
+  </g>
+
+  <!-- ============ ENUMERATION ============ -->
+  <g>
+    <rect x="465" y="680" width="255" height="122" fill="#fffdf5" stroke="#7a4b17" stroke-width="1.5" stroke-dasharray="0" rx="3"/>
+    <rect x="465" y="680" width="255" height="42" fill="#b8862f" rx="3"/>
+    <rect x="465" y="712" width="255" height="10" fill="#b8862f"/>
+    <text x="592" y="697" text-anchor="middle" font-size="11" font-style="italic" fill="#ffffff">«enumeration»</text>
+    <text x="592" y="714" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">AppointmentStatus</text>
+    <line x1="465" y1="722" x2="720" y2="722" stroke="#7a4b17" stroke-width="1.5"/>
+    <text x="477" y="740" font-size="12" fill="#1b2a41">Scheduled</text>
+    <text x="477" y="757" font-size="12" fill="#1b2a41">Completed</text>
+    <text x="477" y="774" font-size="12" fill="#1b2a41">Cancelled</text>
+    <text x="477" y="791" font-size="12" fill="#1b2a41">NoShow</text>
+  </g>
+
+  <!-- ===================== RELATIONSHIPS ===================== -->
+
+  <!-- AGGREGATION: Department (whole, hollow diamond) -> Doctor -->
+  <line x1="185" y1="260" x2="185" y2="400" stroke="#2d4a72" stroke-width="2"/>
+  <polygon points="185,260 199,283 185,306 171,283" fill="#ffffff" stroke="#2d4a72" stroke-width="2"/>
+  <text x="196" y="325" font-size="13" font-weight="bold" fill="#1b2a41">1</text>
+  <text x="196" y="392" font-size="13" font-weight="bold" fill="#1b2a41">1..*</text>
+  <text x="215" y="352" font-size="11" font-style="italic" fill="#5a6b82">employs</text>
+  <rect x="18" y="316" width="118" height="40" fill="#e8effa" stroke="#2d4a72" stroke-width="1" rx="4"/>
+  <text x="77" y="332" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#2d4a72">AGGREGATION</text>
+  <text x="77" y="347" text-anchor="middle" font-size="9.5" fill="#2d4a72">hollow ◇ — Rule 11</text>
+
+  <!-- ASSOCIATION: Doctor -> Appointment -->
+  <line x1="310" y1="484" x2="465" y2="484" stroke="#333333" stroke-width="2"/>
+  <text x="320" y="476" font-size="13" font-weight="bold" fill="#1b2a41">1</text>
+  <text x="432" y="476" font-size="13" font-weight="bold" fill="#1b2a41">0..*</text>
+  <text x="360" y="504" font-size="11" font-style="italic" fill="#5a6b82">handles</text>
+
+  <!-- ASSOCIATION: Patient -> Appointment (elbow) -->
+  <polyline points="995,314 995,360 592,360 592,400" fill="none" stroke="#333333" stroke-width="2"/>
+  <text x="1004" y="332" font-size="13" font-weight="bold" fill="#1b2a41">1</text>
+  <text x="600" y="392" font-size="13" font-weight="bold" fill="#1b2a41">0..*</text>
+  <text x="770" y="352" font-size="11" font-style="italic" fill="#5a6b82">schedules</text>
+
+  <!-- COMPOSITION: Patient (whole, filled diamond) -> MedicalRecord -->
+  <line x1="995" y1="314" x2="995" y2="470" stroke="#1d5c46" stroke-width="2"/>
+  <polygon points="995,314 1009,338 995,362 981,338" fill="#1d5c46" stroke="#1d5c46" stroke-width="2"/>
+  <text x="1006" y="382" font-size="13" font-weight="bold" fill="#1b2a41">1</text>
+  <text x="1006" y="462" font-size="13" font-weight="bold" fill="#1b2a41">1</text>
+  <text x="900" y="420" font-size="11" font-style="italic" fill="#5a6b82">owns</text>
+  <rect x="1040" y="380" width="122" height="40" fill="#e3f2ec" stroke="#1d5c46" stroke-width="1" rx="4"/>
+  <text x="1101" y="396" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1d5c46">COMPOSITION</text>
+  <text x="1101" y="411" text-anchor="middle" font-size="9.5" fill="#1d5c46">filled ◆ — Rule 9</text>
+
+  <!-- Dependency: Appointment -> enumeration -->
+  <line x1="592" y1="586" x2="592" y2="680" stroke="#7a4b17" stroke-width="1.5" stroke-dasharray="7,5"/>
+  <polygon points="592,680 586,668 598,668" fill="none" stroke="#7a4b17" stroke-width="1.5"/>
+
+  <!-- ===================== LEGEND ===================== -->
+  <rect x="60" y="620" width="360" height="196" fill="#ffffff" stroke="#9aa9bd" stroke-width="1.5" rx="5"/>
+  <text x="78" y="645" font-size="14" font-weight="bold" fill="#12263f">Legend — Relationship Types</text>
+
+  <line x1="80" y1="668" x2="150" y2="668" stroke="#333333" stroke-width="2"/>
+  <text x="162" y="672" font-size="12" fill="#1b2a41"><tspan font-weight="bold">Association</tspan> — independent</text>
+
+  <line x1="80" y1="700" x2="150" y2="700" stroke="#2d4a72" stroke-width="2"/>
+  <polygon points="80,700 94,692 108,700 94,708" fill="#ffffff" stroke="#2d4a72" stroke-width="2"/>
+  <text x="162" y="704" font-size="12" fill="#1b2a41"><tspan font-weight="bold">Aggregation</tspan> — part survives</text>
+
+  <line x1="80" y1="732" x2="150" y2="732" stroke="#1d5c46" stroke-width="2"/>
+  <polygon points="80,732 94,724 108,732 94,740" fill="#1d5c46" stroke="#1d5c46" stroke-width="2"/>
+  <text x="162" y="736" font-size="12" fill="#1b2a41"><tspan font-weight="bold">Composition</tspan> — part dies</text>
+
+  <text x="80" y="765" font-size="11" fill="#5a6b82">Diamond is always placed on the WHOLE / container side.</text>
+  <text x="80" y="782" font-size="11" fill="#5a6b82">Multiplicity sits at the FAR end from the class it describes.</text>
+  <text x="80" y="801" font-size="11" fill="#8a5a1a">Bold attributes on Appointment are mandated by Rule 10.</text>
+</svg>

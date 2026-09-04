@@ -1,0 +1,110 @@
+@startuml ClinicAppointmentSystem
+' Clinic Appointment System - Tagum City Community Clinic
+' Render at https://www.plantuml.com/plantuml  (paste this file)
+
+title Clinic Appointment System — UML Class Diagram\nTagum City Community Clinic
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam class {
+  BackgroundColor White
+  BorderColor #2d4a72
+  ArrowColor #333333
+}
+
+class Department {
+  - departmentId : int
+  - name : string
+  - location : string
+  --
+  + addDoctor(d : Doctor) : void
+  + removeDoctor(d : Doctor) : void
+  + listDoctors() : List<Doctor>
+}
+
+class Doctor {
+  - doctorId : int
+  - firstName : string
+  - lastName : string
+  - specialization : string
+  - contactNumber : string
+  --
+  + viewSchedule() : List<Appointment>
+  + getFullName() : string
+}
+
+class Appointment {
+  - appointmentId : int
+  - date : Date
+  - time : Time
+  - status : AppointmentStatus
+  - reason : string
+  --
+  + schedule() : void
+  + cancel() : void
+  + complete() : void
+  + reschedule(d : Date, t : Time) : void
+}
+
+class Patient {
+  - patientId : int
+  - firstName : string
+  - lastName : string
+  - dateOfBirth : Date
+  - gender : string
+  - contactNumber : string
+  - address : string
+  --
+  + scheduleAppointment(doc : Doctor, d : Date, t : Time) : Appointment
+  + cancelAppointment(a : Appointment) : void
+  + getFullName() : string
+}
+
+class MedicalRecord {
+  - recordId : int
+  - bloodType : string
+  - allergies : string
+  - medicalHistory : string
+  - lastUpdated : Date
+  --
+  + addEntry(note : string) : void
+  + updateRecord(...) : void
+  + viewHistory() : string
+}
+
+enum AppointmentStatus {
+  Scheduled
+  Completed
+  Cancelled
+  NoShow
+}
+
+' ---------- RELATIONSHIPS ----------
+
+' AGGREGATION (hollow diamond) — Rule 11: doctors operate INDEPENDENTLY.
+' A Doctor survives the dissolution of a Department.
+Department "1" o-- "1..*" Doctor : employs >
+
+' COMPOSITION (filled diamond) — Rule 9: MedicalRecord does NOT exist
+' independently. Delete the Patient and the record is destroyed with them.
+Patient "1" *-- "1" MedicalRecord : owns >
+
+' ASSOCIATIONS — Rules 1-4. Independent lifecycles.
+Patient "1" -- "0..*" Appointment : schedules >
+Doctor  "1" -- "0..*" Appointment : handles >
+
+Appointment ..> AppointmentStatus : uses
+
+note bottom of Department
+  <b>AGGREGATION</b> (hollow ◇)
+  Rule 11 — "operate independently"
+  Part survives the whole.
+end note
+
+note bottom of MedicalRecord
+  <b>COMPOSITION</b> (filled ◆)
+  Rule 9 — "does not exist independently"
+  Part dies with the whole.
+end note
+
+@enduml
