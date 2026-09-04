@@ -116,19 +116,25 @@ you which is which.
 
 ```
 ClinicAppointmentSystem/
+├── ClinicAppointmentSystem.sln   ← open THIS in Visual Studio 2022
 ├── README.md
 ├── .gitignore
 ├── docs/
 │   ├── 01-analysis.md          Full design rationale & noun analysis
-│   └── 02-github-setup.md      Git + GitHub walkthrough
+│   ├── 02-github-setup.md      Git + GitHub walkthrough
+│   └── 03-winforms-guide.md    UI walkthrough & demo script
 ├── diagrams/
 │   ├── class-diagram.svg       Rendered diagram (open in a browser)
 │   ├── class-diagram.puml      PlantUML source (editable)
 │   └── class-diagram.mmd       Mermaid source (editable)
 ├── src/
-│   └── ClinicAppointmentSystem.Domain/
-│       ├── Entities/           Patient, Doctor, Appointment, Department, MedicalRecord
-│       └── Enums/              AppointmentStatus
+│   ├── ClinicAppointmentSystem.Domain/     Class library — the model
+│   │   ├── Entities/           Patient, Doctor, Appointment, Department, MedicalRecord
+│   │   └── Enums/              AppointmentStatus
+│   └── ClinicAppointmentSystem.WinForms/   WinForms UI (.NET 8)
+│       ├── Program.cs          Entry point + message loop
+│       ├── Data/               ClinicRepository (in-memory store)
+│       └── Forms/              MainForm + 5 dialogs
 └── database/
     ├── schema.sql              MySQL schema
     ├── seed-data.sql           Sample Tagum City data
@@ -139,16 +145,37 @@ ClinicAppointmentSystem/
 
 ## Running things
 
-### The C# domain model
+### The application
+
+Open **`ClinicAppointmentSystem.sln`** in Visual Studio 2022, set
+**ClinicAppointmentSystem.WinForms** as the startup project, and press **F5**.
+
+Or from a terminal:
+
+```bash
+dotnet run --project src/ClinicAppointmentSystem.WinForms
+```
+
+Requires the **.NET 8 SDK** and the **".NET desktop development"** workload.
+Sample data loads automatically — no database needed to run the UI.
+
+The app has four tabs: **Patients**, **Doctors**, **Appointments**,
+**Departments**. Two buttons deliberately demonstrate the graded distinction:
+
+- **Delete Patient** → destroys the medical record with them (composition)
+- **Remove Department** → doctors survive as "(unassigned)" (aggregation)
+
+See [`docs/03-winforms-guide.md`](docs/03-winforms-guide.md) for a demo script.
+
+### The domain model alone
 
 ```bash
 cd src/ClinicAppointmentSystem.Domain
 dotnet build
 ```
 
-Targets **.NET 8**. It's a class library — the domain model only, no UI.
-Open the `.csproj` directly in Visual Studio 2022, or add it to a solution
-alongside a WinForms project.
+A class library with no UI dependency — which is why the business rules could
+be unit-tested without clicking a single button.
 
 ### The database
 
