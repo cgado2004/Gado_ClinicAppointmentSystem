@@ -152,15 +152,13 @@ dotnet run --project src/ClinicAppointmentSystem.WinForms
 ```
 
 Requires the **.NET 8 SDK** and the **".NET desktop development"** workload.
-Sample data loads automatically — no database needed to run the UI.
+Sample data loads automatically.
 
 The app has four tabs: **Patients**, **Doctors**, **Appointments**,
 **Departments**. Two buttons deliberately demonstrate the graded distinction:
 
 - **Delete Patient** → destroys the medical record with them (composition)
 - **Remove Department** → doctors survive as "(unassigned)" (aggregation)
-
-See [`docs/03-winforms-guide.md`](docs/03-winforms-guide.md) for a demo script.
 
 ### The domain model alone
 
